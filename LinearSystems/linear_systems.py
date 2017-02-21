@@ -1,5 +1,5 @@
 # linear_systems.py
-"""Volume 1A: Linear Systems.
+"""Volume 1: Linear Systems.
 <Name>
 <Class>
 <Date>

@@ -1,5 +1,5 @@
 # arnoldi.py
-"""Volume 1B: The Arnoldi Iteration.
+"""Volume 1: The Arnoldi Iteration.
 <Name>
 <Class>
 <Date>

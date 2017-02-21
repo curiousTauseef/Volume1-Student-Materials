@@ -1,5 +1,5 @@
 # image_segmentation.py
-"""Volume 1A: Image Segmentation.
+"""Volume 1: Image Segmentation.
 <Name>
 <Class>
 <Date>

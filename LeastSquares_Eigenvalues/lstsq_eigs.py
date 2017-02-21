@@ -1,5 +1,5 @@
-# qr_lstsq_eigs.py
-"""Volume 1A: QR 2 (Least Squares and Computing Eigenvalues).
+# lstsq_eigs.py
+"""Volume 1: Least Squares and Computing Eigenvalues.
 <Name>
 <Class>
 <Date>"""

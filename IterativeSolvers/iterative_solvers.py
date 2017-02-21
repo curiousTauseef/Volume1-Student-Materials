@@ -1,5 +1,5 @@
 # iterative_solvers.py
-"""Volume 1A: Iterative Solvers.
+"""Volume 1: Iterative Solvers.
 <Name>
 <Class>
 <Date>

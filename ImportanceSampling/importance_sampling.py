@@ -1,5 +1,5 @@
-# montecarlo_sampling.py
-"""Volume 1B: Monte Carlo 2 (Importance Sampling).
+# importance_sampling.py
+"""Volume 1: Importance Sampling.
 <Name>
 <Class>
 <Date>

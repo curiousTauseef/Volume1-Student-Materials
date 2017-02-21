@@ -1,5 +1,5 @@
 # conditioning.py
-"""Volume 1B: Conditioning.
+"""Volume 1: Conditioning.
 <Name>
 <Class>
 <Date>

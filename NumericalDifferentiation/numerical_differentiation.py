@@ -1,5 +1,5 @@
 # numerical_differentiation.py
-"""Volume 1B: Numerical Differentiation.
+"""Volume 1: Numerical Differentiation.
 <Name>
 <Class>
 <Date>

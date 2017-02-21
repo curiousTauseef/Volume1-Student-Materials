@@ -1,5 +1,5 @@
 # sympy_autograd.py
-"""Volume 1B: Differentiation 2 (SymPy and Autograd).
+"""Volume 1: Symbolic and Automatic Differentiation.
 <Name>
 <Class>
 <Date>
