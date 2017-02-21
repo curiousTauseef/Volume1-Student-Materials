@@ -20,6 +20,7 @@ def Newtons_method(f, x0, Df, iters=15, tol=1e-5, alpha=1):
             returns. Defaults to 15.
         tol (float): The function returns when the difference between
             successive approximations is less than tol.
+        alpha (float): The backtracking constant (see Problem 4).
 
     Returns:
         A tuple (x, converged, numiters) with

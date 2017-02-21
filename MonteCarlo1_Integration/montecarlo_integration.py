@@ -72,7 +72,7 @@ def prob3(f, mins, maxs, N=10000):
 def prob4():
     """Integrate the joint normal distribution.
 
-    Return your Monte Carlo estimate, SciPy’s answer, and (assuming SciPy is
+    Return your Monte Carlo estimate, SciPy's answer, and (assuming SciPy is
     correct) the relative error of your Monte Carlo estimate.
     """
     NotImplementedError("Problem 4 Incomplete")

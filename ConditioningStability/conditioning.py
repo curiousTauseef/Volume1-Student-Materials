@@ -6,14 +6,12 @@
 """
 
 import numpy as np
-from numpy.random import normal
-from matplotlib import pyplot as plt
 
 # Problem 1
 def prob1():
     """Randomly perturb w_coeff by replacing each coefficient a_i with
     a_i*r_i, where r_i is drawn from a normal distribution centered at 1 with
-    varience 1e-10.
+    standard deviation 1e-10.
 
     Plot the roots of 100 such experiments in a single graphic, along with the
     roots of the unperturbed polynomial w(x).
@@ -34,7 +32,6 @@ def prob1():
                         -3599979517947607200, 8037811822645051776,
                         -12870931245150988800, 13803759753640704000,
                         -8752948036761600000, 2432902008176640000])
-
     raise NotImplementedError("Problem 1 Incomplete")
 
 
@@ -43,39 +40,36 @@ def eig_condit(M):
     """Approximate the condition number of the eigenvalue problem at M.
 
     Inputs:
-        M - A 2-D square NumPy array, representing a square matrix.
+        M ((n,n) ndarray): A square matrix.
 
     Returns:
-        A tuple containing approximations to the absolute and
-        relative condition numbers of the eigenvalue problem at M.
+        (float) absolute condition number of the eigenvalue problem at M.
+        (float) relative condition number of the eigenvalue problem at M.
+    """
+    raise NotImplementedError("Problem 2 Incomplete")
+
+def plot_eig_condit(x0=-100, x1=100, y0=-100, y1=100, res=10):
+    """Create a grid [x0, x1] x [y0, y1] with the given resolution. For each
+    entry (x,y) in the grid, find the relative condition number of the
+    eigenvalue problem, using the matrix   [[1 x]
+                                            [y 1]]  as the input.
+    Use plt.pcolormesh() to plot the condition number over the entire grid.
+
+    Inputs:
+        x0 (float): min x-value.
+        x1 (float): max x-value.
+        y0 (float): min y-value.
+        y1 (float): max y-value.
+        res (int): number of points along each edge of the grid.
     """
     raise NotImplementedError("Problem 2 Incomplete")
 
 
-
-# 1 pt extra credit
-def plot_eig_condit(x0=-100, x1=100, y0=-100, y1=100, res=10):
-    '''
-    Create a grid of points. For each pair (x,y) in the grid, find the
-    relative condition number of the eigenvalue problem, using the matrix
-    [[1 x]
-     [y 1]]
-    as your input. You can use plt.pcolormesh to plot the condition number
-    over the entire grid.
-
-    INPUT:
-    x0 - min x-value of the grid
-    x1 - max x-value
-    y0 - min y-value
-    y1 - max y-value
-    res - number of points along each edge of the grid
-    '''
-    raise NotImplementedError("plot_eig_condit() not implemented")
-
-
 # Problem 3
 def integral(n):
-    """RETURN I(n)"""
+    """Calculate the integral from 0 to 1 of x^n e^{x-1} dx using the closed
+    form solution (-1)^n !n + (-1)^{n+1} n!/e.
+    """
     raise NotImplementedError("Problem 3 Incomplete")
 
 def prob3():
@@ -83,10 +77,11 @@ def prob3():
     the values to the actual values, and print your explanation of what
     is happening.
     """
-
-    #actual values of the integral at specified n
-    actual_values = [0.367879441171, 0.145532940573, 0.0838770701034,
-                 0.0590175408793, 0.0455448840758, 0.0370862144237,
-                 0.0312796739322, 0.0270462894091, 0.023822728669,
-                 0.0212860390856, 0.0192377544343]
+    # Actual values of the integral at specified n.
+    actual_values = {    1: 0.367879441171,   5: 0.145532940573,
+                        10: 0.0838770701034, 15: 0.0590175408793,
+                        20: 0.0455448840758, 25: 0.0370862144237,
+                        30: 0.0312796739322, 35: 0.0270462894091,
+                        40: 0.023822728669,  45: 0.0212860390856,
+                        50: 0.0192377544343                         }
     raise NotImplementedError("Problem 3 Incomplete")
