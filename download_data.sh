@@ -44,6 +44,7 @@ mv $VOLUME1/ellipse.npy LeastSquares_Eigenvalues/
 mv $VOLUME1/housing.npy LeastSquares_Eigenvalues/
 mv $VOLUME1/dream.png ImageSegmentation/
 mv $VOLUME1/hubble_image.jpg SVD_ImageCompression/
+mv $VOLUME1/faces94.zip FacialRecognition/
 mv $VOLUME1/matrix.txt PageRank/
 mv $VOLUME1/ncaa2013.csv PageRank/
 
