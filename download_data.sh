@@ -4,8 +4,8 @@
 GIT="https://git-scm.com"
 GITLFS="https://git-lfs.github.com"
 TEMPDIR="__TEMP_DATA_DOWNLOAD__"
-PYTHONESSENTIALS="../$TEMPDIR/PythonEssentials"
-VOLUME1="../$TEMPDIR/Volume1"
+PYTHONESSENTIALS="$TEMPDIR/PythonEssentials"
+VOLUME1="$TEMPDIR/PythonEssentials"
 
 set +e
 
@@ -15,9 +15,7 @@ command -v git ||
 command -v git-lfs ||
 { echo -e "\nERROR: git-lfs is required. Download it at $GITLFS.\n"; exit 1; }
 
-# Make a temporary neighboring repository for the data download.
-START=`pwd`
-cd ../
+# Make a temporary repository for the data download.
 mkdir $TEMPDIR
 cd $TEMPDIR
 
@@ -28,12 +26,10 @@ git remote add -f origin https://github.com/Foundations-of-Applied-Mathematics/D
 git config core.sparseCheckout true
 echo "PythonEssentials" >> .git/info/sparse-checkout
 echo "Volume1" >> .git/info/sparse-checkout
-echo -e "\nInitializing Download\n"
 git pull origin master
+cd ../
 
-# Copy the files over from the temporary folder.
-cd $START
-
+# Migrate the files from the temporary folder.
 mv $PYTHONESSENTIALS/grid.npy NumpyIntro/
 mv $PYTHONESSENTIALS/FARS.npy MatplotlibIntro/
 mv $PYTHONESSENTIALS/MLB.npy DataVisualization/
@@ -48,11 +44,10 @@ mv $VOLUME1/ellipse.npy LeastSquares_Eigenvalues/
 mv $VOLUME1/housing.npy LeastSquares_Eigenvalues/
 mv $VOLUME1/dream.png ImageSegmentation/
 mv $VOLUME1/hubble_image.jpg SVD_ImageCompression/
-# mv $VOLUME1/cameraman.jpg NumericalDifferentiation/
 mv $VOLUME1/matrix.txt PageRank/
 mv $VOLUME1/ncaa2013.csv PageRank/
 
-# Delete the temporary folder and return to the original folder.
-cd ../
+
+# Delete the temporary folder.
 rm -rf $TEMPDIR
-cd $START
+
