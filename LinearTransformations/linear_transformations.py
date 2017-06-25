@@ -12,7 +12,7 @@ def stretch(A, a, b):
     """Scale the points in 'A' by 'a' in the x direction and 'b' in the
     y direction.
 
-    Inputs:
+    Parameters:
         A ((2,n) ndarray): Array containing points in R2 stored as columns.
         a (float): scaling factor in the x direction.
         b (float): scaling factor in the y direction.
@@ -23,7 +23,7 @@ def shear(A, a, b):
     """Slant the points in 'A' by 'a' in the x direction and 'b' in the
     y direction.
 
-    Inputs:
+    Parameters:
         A ((2,n) ndarray): Array containing points in R2 stored as columns.
         a (float): scaling factor in the x direction.
         b (float): scaling factor in the y direction.
@@ -34,7 +34,7 @@ def reflect(A, a, b):
     """Reflect the points in 'A' about the line that passes through the origin
     and the point (a,b).
 
-    Inputs:
+    Parameters:
         A ((2,n) ndarray): Array containing points in R2 stored as columns.
         a (float): x-coordinate of a point on the reflecting line.
         b (float): y-coordinate of the same point on the reflecting line.
@@ -44,7 +44,7 @@ def reflect(A, a, b):
 def rotate(A, theta):
     """Rotate the points in 'A' about the origin by 'theta' radians.
 
-    Inputs:
+    Parameters:
         A ((2,n) ndarray): Array containing points in R2 stored as columns.
         theta (float): The rotation angle in radians.
     """
@@ -67,11 +67,11 @@ def solar_system(T, omega_e, omega_m):
 
 def random_vector(n):
     """Generate a random vector of length n as a list."""
-    return [random() for i in xrange(n)]
+    return [random() for i in range(n)]
 
 def random_matrix(n):
     """Generate a random nxn matrix as a list of lists."""
-    return [[random() for j in xrange(n)] for i in xrange(n)]
+    return [[random() for j in range(n)] for i in range(n)]
 
 def matrix_vector_product(A, x):
     """Compute the matrix-vector product Ax as a list."""
@@ -84,7 +84,6 @@ def matrix_matrix_product(A, B):
     return [[sum([A[i][k] * B[k][j] for k in range(n)])
                                     for j in range(p) ]
                                     for i in range(m) ]
-
 
 # Problem 3
 def prob3():

@@ -2,45 +2,46 @@
 """Volume 1: Least Squares and Computing Eigenvalues.
 <Name>
 <Class>
-<Date>"""
+<Date>
+"""
+
+# (Optional) Import functions from your QR Decomposition lab.
+# import sys
+# sys.path.insert(1, "../QR_Decomposition")
+# from qr_decomposition import qr_gram_schmidt, qr_householder, hessenberg
 
 import numpy as np
-from cmath import sqrt
-from scipy import linalg as la
 from matplotlib import pyplot as plt
 
 
 # Problem 1
 def least_squares(A, b):
-    """Calculate the least squares solutions to Ax = b using QR decomposition.
+    """Calculate the least squares solutions to Ax = b by using the QR
+    decomposition.
 
-    Inputs:
+    Parameters:
         A ((m,n) ndarray): A matrix of rank n <= m.
         b ((m, ) ndarray): A vector of length m.
 
     Returns:
-        x ((n, ) ndarray): The solution to the normal equation.
+        x ((n, ) ndarray): The solution to the normal equations.
     """
     raise NotImplementedError("Problem 1 Incomplete")
 
-
 # Problem 2
 def line_fit():
-    """Load the data from housing.npy. Use least squares to calculate the line
-    that best relates height to weight.
-
-    Plot the original data points and the least squares line together.
+    """Find the least squares line that relates the year to the housing price
+    index for the data in housing.npy. Plot both the data points and the least
+    squares line.
     """
     raise NotImplementedError("Problem 2 Incomplete")
 
 
 # Problem 3
 def polynomial_fit():
-    """Load the data from housing.npy. Use least squares to calculate
-    the polynomials of degree 3, 6, 9, and 12 that best fit the data.
-
-    Plot the original data points and each least squares polynomial together
-    in individual subplots.
+    """Find the least squares polynomials of degree 3, 6, 9, and 12 that relate
+    the year to the housing price index for the data in housing.npy. Plot both
+    the data points and the least squares polynomials in individual subplots.
     """
     raise NotImplementedError("Problem 3 Incomplete")
 
@@ -51,17 +52,16 @@ def plot_ellipse(a, b, c, d, e):
     cos_t, sin_t = np.cos(theta), np.sin(theta)
     A = a*(cos_t**2) + c*cos_t*sin_t + e*(sin_t**2)
     B = b*cos_t + d*sin_t
-    r = (-B + np.sqrt(B**2 + 4*A))/(2*A)
+    r = (-B + np.sqrt(B**2 + 4*A)) / (2*A)
 
-    plt.plot(r*cos_t, r*sin_t, lw=2)
+    plt.plot(r*cos_t, r*sin_t)
     plt.gca().set_aspect("equal", "datalim")
 
 # Problem 4
 def ellipse_fit():
-    """Load the data from ellipse.npy. Use least squares to calculate the
-    ellipse that best fits the data.
-
-    Plot the original data points and the least squares ellipse together.
+    """Calculate the parameters for the ellipse that best fits the data in
+    ellipse.npy. Plot the original data points and the ellipse together, using
+    plot_ellipse() to plot the ellipse.
     """
     raise NotImplementedError("Problem 4 Incomplete")
 
@@ -71,14 +71,14 @@ def power_method(A, N=20, tol=1e-12):
     """Compute the dominant eigenvalue of A and a corresponding eigenvector
     via the power method.
 
-    Inputs:
+    Parameters:
         A ((n,n) ndarray): A square matrix.
         N (int): The maximum number of iterations.
         tol (float): The stopping tolerance.
 
     Returns:
-        (foat): The dominant eigenvalue of A.
-        ((n, ) ndarray): An eigenvector corresponding to the dominant
+        (float): The dominant eigenvalue of A.
+        ((n,) ndarray): An eigenvector corresponding to the dominant
             eigenvalue of A.
     """
     raise NotImplementedError("Problem 5 Incomplete")
@@ -88,13 +88,13 @@ def power_method(A, N=20, tol=1e-12):
 def qr_algorithm(A, N=50, tol=1e-12):
     """Compute the eigenvalues of A via the QR algorithm.
 
-    Inputs:
+    Parameters:
         A ((n,n) ndarray): A square matrix.
         N (int): The number of iterations to run the QR algorithm.
-        tol (float): The threshold value for determining if a diagonal block
-            is 1x1 or 2x2.
+        tol (float): The threshold value for determining if a diagonal S_i
+            block is 1x1 or 2x2.
 
     Returns:
-        ((n, ) ndarray): The eigenvalues of A.
+        ((n,) ndarray): The eigenvalues of A.
     """
     raise NotImplementedError("Problem 6 Incomplete")

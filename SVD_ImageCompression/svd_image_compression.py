@@ -1,66 +1,75 @@
-# svd_image_compression.py
-"""Volume 1: The SVD and Image Compression.
-<Name>
-<Class>
-<Date>
-"""
+# solutions.py
+"""Volume 1: The SVD and Image Compression. Solutions File."""
 
-from scipy import linalg as la
-import numpy as np
-from matplotlib import pyplot as plt
 
 # Problem 1
-def truncated_svd(A,k=None):
-    """Computes the truncated SVD of A. If r is None or equals the number
-        of nonzero singular values, it is the compact SVD.
+def compact_svd(A, tol=1e-6):
+    """Compute the truncated SVD of A.
+
     Parameters:
-        A: the matrix
-        k: the number of singular values to use
+        A ((m,n) ndarray): The matrix (of rank r) to factor.
+        tol (float): The tolerance for excluding singular values.
+
     Returns:
-        U - the matrix U in the SVD
-        s - the diagonals of Sigma in the SVD
-        Vh - the matrix V^H in the SVD
+        ((m,r) ndarray): The orthonormal matrix U in the SVD.
+        ((r,) ndarray): The singular values of A as a 1-D array.
+        ((r,n) ndarray): The orthonormal matrix V^H in the SVD.
     """
-    raise NotImplementedError("truncated_svd incomplete")
+    raise NotImplementedError("Problem 1 Incomplete")
+
 
 # Problem 2
-def visualize_svd():
-    """Plot each transformation associated with the SVD of A."""
-    raise NotImplementedError("visualize_svd incomplete")
+def visualize_svd(A):
+    """Plot the effect of the SVD of A as a sequence of linear transformations
+    on the unit circle and the two standard basis vectors.
+    """
+    raise NotImplementedError("Problem 2 Incomplete")
+
 
 # Problem 3
-def svd_approx(A, k):
-    """Returns best rank k approximation to A with respect to the induced 2-norm.
+def svd_approx(A, s):
+    """Return the best rank s approximation to A with respect to the 2-norm
+    and the Frobenius norm, along with the number of bytes needed to store
+    the approximation via the truncated SVD.
 
-    Inputs:
-    A - np.ndarray of size mxn
-    k - rank
+    Parameters:
+        A ((m,n), ndarray)
+        s (int): The rank of the desired approximation.
 
-    Return:
-    Ahat - the best rank k approximation
+    Returns:
+        ((m,n), ndarray) The best rank s approximation of A.
+        (int) The number of entries needed to store the truncated SVD.
     """
-    raise NotImplementedError("svd_approx incomplete")
+    raise NotImplementedError("Problem 3 Incomplete")
+
 
 # Problem 4
-def lowest_rank_approx(A,e):
-    """Returns the lowest rank approximation of A with error less than e
-    with respect to the induced 2-norm.
+def lowest_rank_approx(A, err):
+    """Return the lowest rank approximation of A with error less than 'err'
+    with respect to the matrix 2-norm, along with the number of bytes needed
+    to store the approximation via the truncated SVD.
 
-    Inputs:
-    A - np.ndarray of size mxn
-    e - error
+    Parameters:
+        A ((m, n) ndarray)
+        err (float): Desired maximum error.
 
-    Return:
-    Ahat - the lowest rank approximation of A with error less than e.
+    Returns:
+        A_s ((m,n) ndarray) The lowest rank approximation of A satisfying
+            ||A - A_s||_2 < err.
+        (int) The number of entries needed to store the truncated SVD.
     """
-    raise NotImplementedError("lowest_rank_approx incomplete")
+    raise NotImplementedError("Problem 4 Incomplete")
+
 
 # Problem 5
-def compress_image(filename,k):
-    """Plot the original image found at 'filename' and the rank k approximation
-    of the image found at 'filename.'
+def compress_image(filename, s):
+    """Plot the original image found at 'filename' and the rank s approximation
+    of the image found at 'filename.' State in the figure title the difference
+    in the number of entries used to store the original image and the
+    approximation.
 
-    filename - jpg image file path
-    k - rank
+    Parameters:
+        filename (str): Image file path.
+        s (int): Rank of new image.
     """
-    raise NotImplementedError("compress_image incomplete")
+    raise NotImplementedError("Problem 5 Incomplete")

@@ -5,15 +5,12 @@
 <Date>
 """
 
-import numpy as np
-from scipy import linalg as la
-
 
 # Problem 1
 def qr_gram_schmidt(A):
     """Compute the reduced QR decomposition of A via Modified Gram-Schmidt.
 
-    Inputs:
+    Parameters:
         A ((m,n) ndarray): A matrix of rank n.
 
     Returns:
@@ -28,11 +25,11 @@ def abs_det(A):
     """Use the QR decomposition to efficiently compute the absolute value of
     the determinant of A.
 
-    Inputs:
+    Parameters:
         A ((n,n) ndarray): A square matrix.
 
     Returns:
-        (float) the absolute value of the detetminant of A.
+        (float) the absolute value of the determinant of A.
     """
     raise NotImplementedError("Problem 2 Incomplete")
 
@@ -41,7 +38,7 @@ def abs_det(A):
 def solve(A, b):
     """Use the QR decomposition to efficiently solve the system Ax = b.
 
-    Inputs:
+    Parameters:
         A ((n,n) ndarray): An invertible matrix.
         b ((n, ) ndarray): A vector of length n.
 
@@ -50,11 +47,12 @@ def solve(A, b):
     """
     raise NotImplementedError("Problem 3 Incomplete")
 
+
 # Problem 4
 def qr_householder(A):
     """Compute the full QR decomposition of A via Householder reflections.
 
-    Inputs:
+    Parameters:
         A ((m,n) ndarray): A matrix of rank n.
 
     Returns:
@@ -63,12 +61,13 @@ def qr_householder(A):
     """
     raise NotImplementedError("Problem 4 Incomplete")
 
+
 # Problem 5
 def hessenberg(A):
     """Compute the Hessenberg form H of A, along with the orthonormal matrix Q
     such that A = QHQ^T.
 
-    Inputs:
+    Parameters:
         A ((n,n) ndarray): An invertible matrix.
 
     Returns:
@@ -76,4 +75,3 @@ def hessenberg(A):
         Q ((n,n) ndarray): An orthonormal matrix.
     """
     raise NotImplementedError("Problem 5 Incomplete")
-

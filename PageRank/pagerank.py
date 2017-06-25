@@ -1,94 +1,92 @@
 # pagerank.py
-"""Volume 1: The PageRank Algorithm.
-<name>
-<class>
-<date>
+"""Volume 1: The Page Rank Algorithm.
+<Name>
+<Class>
+<Date>
 """
 
-import numpy as np
-import scipy.sparse as spar
-import scipy.linalg as la
-from scipy.sparse import linalg as sla
 
-def adj_mat(datafile, n):
-    """ Parse the data stored in 'datafile' and form the
-    adjacency matrix of the corresponding graph.
-    'n' is the number of rows of the nxn sparse matrix formed. """
-    adj = spar.dok_matrix((n,n))
-    with open(datafile, 'r') as f:
-        for L in f:
-            L = L.strip().split()
-            try:
-                x, y = int(L[0]), int(L[1])
-                adj[x, y] = 1
-            except:
-                continue
-    return adj
+# Problem 1
+def to_matrix(filename, n):
+    """Return the nxn adjacency matrix described by datafile.
+
+    Parameters:
+        datafile (str): The name of a .txt file describing a directed graph.
+        Lines describing edges should have the form '<from node>\t<to node>\n'.
+        The file may also include comments.
+    n (int): The number of nodes in the graph described by datafile
+
+    Returns:
+        A SciPy sparse dok_matrix.
+    """
+    raise NotImplementedError("Problem 1 Incomplete")
 
 
-def page_rank_dense_lstsq(datafile, d, datasize, n=None):
-    """ Solve the page rank problem, given the data in 'datafile',
-    the dampening factor 'd', the size 'datasize' of the dataset,
-    and the number 'n' of nodes to include.
-    Have 'n' default to None.
-    Use the method involving least squares."""
-    data = adj_mat(datafile, n)
-    A = np.asarray(data.tocsr()[:n, :n].todense())
-    #data is dense and is of type matrix
-    e = np.ones(n)
-    for i, v in enumerate(A.sum(1)):
-        if v == 0:
-            A[i] = e
+# Problem 2
+def calculateK(A,N):
+    """Compute the matrix K as described in the lab.
 
-    K = ((1./A.sum(1))[:,np.newaxis]*A).T
-    K *= - d
-    np.fill_diagonal(K, K.diagonal() + 1)
-    R = la.lstsq(K, (1-d)*e/float(n))
-    max_rank = R[0].max()
+    Parameters:
+        A (ndarray): adjacency matrix of an array
+        N (int): the datasize of the array
 
-    return max_rank, np.where(R[0]==max_rank)[0]
+    Returns:
+        K (ndarray)
+    """
+    raise NotImplementedError("Problem 2 Incomplete")
 
-def page_rank_dense_iter(datafile, d, datasize, n=None, tol=1E-5):
-    """ Solve the page rank problem, given the data in 'datafile',
-    the dampening factor 'd', the size 'datasize' of the dataset,
-    the number 'n' of nodes to include, and a tolerance 'tol'
-    to use to determine when to stop iterating.
-    Have 'n' default to None.
-    Use the iterative method described in the lab. """
-    pass
 
-def page_rank_dense_eig(datafile, d, datasize, n=None):
-    """ Solve the page rank problem, given the data in 'datafile',
-    the dampening factor 'd', the size 'datasize' of the dataset,
-    and the number 'n' of nodes to include.
-    Have 'n' default to None.
-    Use the eigenvalue method described in the lab. """
-    pass
+# Problem 3
+def iter_solve(adj, N=None, d=.85, tol=1E-5):
+    """Return the page ranks of the network described by 'adj'.
+    Iterate through the PageRank algorithm until the error is less than 'tol'.
 
-def sparse_pr(datafile, d, datasize, n=None, tol=1e-5):
-    """ Solve the page rank problem, given the data in 'datafile',
-    the dampening factor 'd', the size 'datasize' of the dataset,
-    the number 'n' of nodes to include, and a tolerance 'tol'
-    to use to determine when to stop iterating.
-    Have 'n' default to None.
-    Use the iterative method described in the lab.
-    Use only sparse matrix operations. """
+    Parameters:
+        adj (ndarray): The adjacency matrix of a directed graph.
+        N (int): Restrict the computation to the first 'N' nodes of the graph.
+            If N is None (default), use the entire matrix.
+        d (float): The damping factor, a float between 0 and 1.
+        tol (float): Stop iterating when the change in approximations to the
+            solution is less than 'tol'.
 
-    A = data.tocsc()[:n, :n]
-    s = A.sum(1)
-    diag = 1./s
-    sinks = s==0
-    diag[sinks] = 0
-    K = spar.spdiags(diag.squeeze(1), 0, n, n).dot(A).T
+    Returns:
+        The approximation to the steady state.
+    """
+    raise NotImplementedError("Problem 3 Incomplete")
 
-    d = .85
-    convDist = 1
-    Rinit = np.ones((n, 1))/float(n)
-    Rold = Rinit
-    while convDist > tol:
-        Rnew = d*K.dot(Rold) + (1-d)*Rinit + (d*Rold[sinks].sum())*Rinit
-        convDist = la.norm(Rnew-Rold)
-        Rold = Rnew
 
-    max_rank = Rnew.max()
-    return max_rank, Rnew[Rnew==max_rank]
+# Problem 4
+def eig_solve(adj, N=None, d=.85):
+    """Return the page ranks of the network described by 'adj'. Use SciPy's
+    eigenvalue solver to calculate the steady state of the PageRank algorithm
+
+    Parameters:
+        adj (ndarray): The adjacency matrix of a directed graph.
+        N (int): Restrict the computation to the first 'N' nodes of the graph.
+            If N is None (default), use the entire matrix.
+        d (float): The damping factor, a float between 0 and 1.
+        tol (float): Stop iterating when the change in approximations to the
+            solution is less than 'tol'.
+
+    Returns:
+        The approximation to the steady state.
+    """
+    raise NotImplementedError("Problem 4 Incomplete")
+
+
+# Problem 5
+def team_rank(filename='ncaa2013.csv'):
+    """Use iter_solve() to predict the rankings of the teams in the given
+    dataset of games. The dataset should have two columns, representing
+    winning and losing teams. Each row represents a game, with the winner on
+    the left, loser on the right. Parse this data to create the adjacency
+    matrix, and feed this into the solver to predict the team ranks.
+
+    Parameters:
+        filename (str): The name of the data file.
+    Returns:
+        ranks (list): The ranks of the teams from best to worst.
+        teams (list): The names of the teams, also from best to worst.
+    """
+    raise NotImplementedError("Problem 5 Incomplete")
+
