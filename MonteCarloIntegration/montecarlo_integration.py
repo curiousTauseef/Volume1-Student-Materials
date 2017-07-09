@@ -7,78 +7,76 @@
 
 
 # Problem 1
-def prob1(N=10000):
-    """Return an estimate of the volume of the unit sphere using Monte
-    Carlo Integration.
+def ball_volume(n, N=10000):
+    """Estimate the volume of the n-dimensional unit ball.
 
-    Input:
-        N (int, optional) - The number of points to sample. Defaults
-            to 10000.
+    Parameters:
+        n (int): The dimension of the ball. n=2 corresponds to the unit circle,
+            n=3 corresponds to the unit sphere, and so on.
+        N (int): The number of random points to sample.
 
+    Returns:
+        (float): An estimate for the volume of the n-dimensional unit ball.
     """
-    raise NotImplementedError("Problem 1 Incomplete")
+    raise ValueError("Problem 1 Incomplete")
 
 
 # Problem 2
-def prob2(f, a, b, N=10000):
-    """Use Monte-Carlo integration to approximate the integral of
-    1-D function f on the interval [a,b].
+def mc_integrate1d(f, a, b, N=10000):
+    """Approximate the integral of f on the interval [a,b].
 
-    Inputs:
-        f (function) - Function to integrate. Should take scalar input.
-        a (float) - Left-hand side of interval.
-        b (float) - Right-hand side of interval.
-        N (int, optional) - The number of points to sample in
-            the Monte-Carlo method. Defaults to 10000.
+    Parameters:
+        f (function): the function to integrate. Accepts and returns scalars.
+        a (float): the lower bound of interval of integration.
+        b (float): the lower bound of interval of integration.
+        N (int): The number of random points to sample.
 
     Returns:
-        estimate (float) - The result of the Monte-Carlo algorithm.
+        (float): An approximation of the integral of f over [a,b].
 
     Example:
         >>> f = lambda x: x**2
-        >>> # Integral from 0 to 1. True value is 1/3.
-        >>> prob2(f, 0, 1)
-        0.3333057231764805
+        >>> mc_integrate1d(f, -4, 2)    # Integrate from -4 to 2.
+        23.734810301138324              # The true value is 24.
     """
-    raise NotImplementedError("Problem 2 Incomplete")
+    raise ValueError("Problem 2 Incomplete")
 
 
 # Problem 3
-def prob3(f, mins, maxs, N=10000):
-    """Use Monte-Carlo integration to approximate the integral of f
-    on the box defined by mins and maxs.
+def mc_integrate(f, mins, maxs, N=10000):
+    """Approximate the integral of f over the box defined by mins and maxs.
 
-    Inputs:
-        f (function) - The function to integrate. This function should
-            accept a 1-D NumPy array as input.
-        mins (1-D np.ndarray) - Minimum bounds on integration.
-        maxs (1-D np.ndarray) - Maximum bounds on integration.
-        N (int, optional) - The number of points to sample in
-            the Monte-Carlo method. Defaults to 10000.
+    Parameters:
+        f (function): The function to integrate. Accepts and returns
+            1-D NumPy arrays of length n.
+        mins (list): the lower bounds of integration.
+        maxs (list): the upper bounds of integration.
+        N (int): The number of random points to sample.
 
     Returns:
-        estimate (float) - The result of the Monte-Carlo algorithm.
+        (float): An approximation of the integral of f over the domain.
 
     Example:
-        >>> f = lambda x: np.hypot(x[0], x[1]) <= 1
-        >>> # Integral over the square [-1,1] x [-1,1]. True value is pi.
-        >>> mc_int(f, np.array([-1,-1]), np.array([1,1]))
-        3.1290400000000007
+        # Define f(x,y) = 3x - 4y + y^2. Inputs are grouped into an array.
+        >>> f = lambda x: 3*x[0] - 4*x[1] + x[1]**2
+
+        # Integrate over the box [1,3]x[-2,1].
+        >>> mc_integrate(f, [1, -2], [3, 1])
+        53.562651072181225              # The true value is 54.
     """
-    NotImplementedError("Problem 3 Incomplete")
+    raise ValueError("Problem 3 Incomplete")
 
 
 # Problem 4
 def prob4():
-    """Integrate the joint normal distribution.
-
-    Return your Monte Carlo estimate, SciPy's answer, and (assuming SciPy is
-    correct) the relative error of your Monte Carlo estimate.
+    """Let n=4 and Omega = [-3/2,3/4]x[0,1]x[0,1/2]x[0,1].
+    - Define the joint distribution f of n standard normal random variables.
+    - Use SciPy to integrate f over Omega.
+    - Get 20 integer values of N that are roughly logarithmically spaced from
+        10**1 to 10**5. For each value of N, use mc_integrate() to compute 25
+        estimates of the integral of f over Omega with N samples, and average
+        the estimates together. Compute the relative error of each average.
+    - Plot the relative error against the sample size N on a log-log scale.
+        Also plot the line 1 / sqrt(N) for comparison.
     """
-    NotImplementedError("Problem 4 Incomplete")
-
-
-# Problem 5
-def prob5(numEstimates=50):
-    """Plot the error of Monte Carlo Integration."""
-    NotImplementedError("Problem 5 Incomplete")
+    raise ValueError("Problem 4 Incomplete")

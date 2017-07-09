@@ -29,9 +29,9 @@ echo -e "\nMigrating files ..."
 
 mv $PYTHONESSENTIALS/grid.npy NumpyIntro/
 mv $PYTHONESSENTIALS/FARS.npy MatplotlibIntro/
-mv $PYTHONESSENTIALS/hello_world.txt ExceptionsFileIO/
-mv $PYTHONESSENTIALS/cf_example1.txt ExceptionsFileIO/
-mv $PYTHONESSENTIALS/cf_example2.txt ExceptionsFileIO/
+mv $PYTHONESSENTIALS/hello_world.txt Exceptions_FileIO/
+mv $PYTHONESSENTIALS/cf_example1.txt Exceptions_FileIO/
+mv $PYTHONESSENTIALS/cf_example2.txt Exceptions_FileIO/
 mv $PYTHONESSENTIALS/MLB.npy DataVisualization/
 mv $PYTHONESSENTIALS/anscombe.npy DataVisualization/
 mv $PYTHONESSENTIALS/countries.npy DataVisualization/
@@ -45,8 +45,11 @@ mv $VOLUME1/dream.png ImageSegmentation/
 mv $VOLUME1/dream_gray.png ImageSegmentation/
 mv $VOLUME1/monument.png ImageSegmentation/
 mv $VOLUME1/monument_gray.png ImageSegmentation/
-mv $VOLUME1/hubble_image.jpg SVD_ImageCompression/
+mv $VOLUME1/hubble.jpg SVD_ImageCompression/
+mv $VOLUME1/hubble_gray.jpg SVD_ImageCompression/
 mv $VOLUME1/faces94.zip FacialRecognition/
+mv $VOLUME1/plane.npy Differentiation/
+mv $VOLUME1/stability_data.npy Conditioning_Stability/
 mv $VOLUME1/matrix.txt PageRank/
 mv $VOLUME1/ncaa2013.csv PageRank/
 mv $VOLUME1/social_network.csv DrazinInverse/

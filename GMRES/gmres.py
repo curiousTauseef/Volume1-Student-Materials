@@ -1,89 +1,71 @@
 # gmres.py
-"""
-Volume 1: GMRES
+"""Volume 1: GMRES.
 <Name>
 <Class>
 <Date>
 """
 
-# Problem 1
-def gmres(A, b, x0, k=100, tol=1e-8):
-    '''Calculate approximate solution of Ax=b using GMRES algorithm.
 
-    INPUTS:
-    A    - Callable function that calculates Ax for any input vector x.
-    b    - A NumPy array of length m.
-    x0   - An arbitrary initial guess.
-    k    - Maximum number of iterations of the GMRES algorithm. Defaults to 100.
-    tol  - Stop iterating if the residual is less than 'tol'. Defaults to 1e-8.
+# Problems 1 and 2.
+def gmres(A, b, x0, k=100, tol=1e-8, plot=False):
+    """Calculate approximate solution of Ax=b using the GMRES algorithm.
 
-    RETURN:
-    Return (y, res) where 'y' is an approximate solution to Ax=b and 'res'
-    is the residual.
-    '''
-    raise NotImplementedError("Problem 1 incomplete.")
+    Parameters:
+        A ((m,m) ndarray): A square matrix.
+        b ((m,) ndarray): A 1-D array of length m.
+        x0 ((m,) ndarray): The initial guess for the solution to Ax=b.
+        k (int): Maximum number of iterations of the GMRES algorithm.
+        tol (float): Stopping criterion for size of residual.
+        plot (bool): Whether or not to plot convergence (Problem 2).
 
-
-# Problem 2
-def plot_gmres(A, b, x0, tol=1e-8):
-    '''Use the GMRES algorithm to approximate the solution to Ax=b.  Plot the
-    eigenvalues of A and the convergence of the algorithm.
-
-    INPUTS:
-    A   - A 2-D NumPy array of shape mxm.
-    b   - A 1-D NumPy array of length m.
-    x0  - An arbitrary initial guess.
-    tol - Stop iterating and create the desired plots when the residual is
-          less than 'tol'. Defaults to 1e-8.
-
-    OUTPUT:
-    Follow the GMRES algorithm until the residual is less than tol, for a
-    maximum of m iterations. Then create the two following plots (subplots
-    of a single figure):
-
-    1. Plot the eigenvalues of A in the complex plane.
-
-    2. Plot the convergence of the GMRES algorithm by plotting the
-    iteration number on the x-axis and the residual on the y-axis.
-    Use a log scale on the y-axis.
-    '''
-    raise NotImplementedError("Problem 2 incomplete.")
-
-def make_plots(m=200):
-    '''Create the matrix An defined in problem 2 in the manual
-    for n = -4, -2, -0, 2, 4.  Call plot_gmres on each, with b
-    a vector of ones, and an initial guess x0 a vector of zeros.
-    Print a statement explaining how the convergence relates to
-    the eigenvalues.
-    '''
-    raise NotImplementedError("make_plots not yet implemented.")
+    Returns:
+        ((m,) ndarray): Approximate solution to Ax=b.
+        res (float): Residual of the solution.
+    """
+    raise NotImplementedError("Problem 1 Incomplete")
 
 
 # Problem 3
-def gmres_k(Amul, b, x0, k=5, tol=1E-8, restarts=50):
-    '''Use the GMRES(k) algorithm to approximate the solution to Ax=b.
+def prob3(m=200):
+    """For n=-4,-2,0,2,4 create a matrix A= n*I + P where I is the mxm
+    identity, and P is an mxm matrix with entries drawn from a normal
+    distribution with mean 0 and standard deviation 1/(2*sqrt(m)).
+    For each of the given values of n call gmres() with A, a vector of ones called b, an initial guess x0=0, and plot=True
 
-    INPUTS:
-    A   - A Callable function that calculates Ax for any vector x.
-    b   - A NumPy array.
-    x0  - An arbitrary initial guess.
-    k   - Maximum number of iterations of the GMRES algorithm before
-        restarting. Defaults to 100.
-    tol - Stop iterating if the residual is less than 'tol'. Defaults
-        to 1E-8.
-    restarts - Maximum number of restarts. Defaults to 50.
+    Parameters:
+        m (int): Size of the matrix A.
+    """
+    raise NotImplementedError("Problem 3 Incomplete")
 
-    OUTPUT:
-    Return (y, res) where 'y' is an approximate solution to Ax=b and 'res'
-    is the residual.
-    '''
-    raise NotImplementedError("Problem 3 incomplete.")
 
+# Problem 4
+def gmres_k(A, b, x0, k=5, tol=1E-8, restarts=50):
+    """Implement the GMRES algorithm with restarts. Terminate the algorithm
+    when the size of the residual is less than tol or when the maximum number
+    of restarts has been reached.
+
+    Parameters:
+        A ((m,m) ndarray): A square matrix.
+        b ((m,) ndarray): A 1-D array of length m.
+        x0 ((m,) ndarray): The initial guess for the solution to Ax=b.
+        k (int): Maximum number of iterations of the GMRES algorithm.
+        tol (float): Stopping criterion for size of residual.
+        restarts (int): Maximum number of restarts. Defaults to 50.
+
+    Returns:
+        ((m,) ndarray): Approximate solution to Ax=b.
+        res (float): Residual of the solution.
+    """
+    raise NotImplementedError("Problem 4 Incomplete")
+
+
+# Problem 5
 def time_gmres(m=200):
-    '''Time the gmres and gmres_k functions on each of the matrices
-    from problem 2.  Let x0 be a vector of zeros or anything you like.
-    The results might be more dramatic with an x0 of larger magnitude.
-    Print your results.  What do you observe?
-    '''
-    raise NotImplementedError("time_gmres not yet implemented.")
+    """Using the same matrices as in problem 2, plot the time required to
+    complete gmres(), gmres_k(), and scipy.sparse.linalg.gmres() with
+    restarts. Plot the values of n against the times.
 
+    Parameters:
+        m (int): Size of matrix A.
+    """
+    raise NotImplementedError("Problem 5 Incomplete")
