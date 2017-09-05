@@ -8,11 +8,11 @@
 
 # Problems 1, 3, and 5
 def newton(f, x0, Df, tol=1e-5, maxiters=15, alpha=1.):
-    """Use Newton's method to approximate a root of the function f.
+    """Use Newton's method to approximate a zero of the function f.
 
     Parameters:
         f (function): a function from R^n to R^n (assume n=1 until Problem 5).
-        x0 (float or ndarray): The initial guess for the root of f.
+        x0 (float or ndarray): The initial guess for the zero of f.
         Df (function): The derivative of f, a function from R^n to R^(nxn).
         tol (float): Convergence tolerance. The function should returns when
             the difference between successive approximations is less than tol.
@@ -20,7 +20,7 @@ def newton(f, x0, Df, tol=1e-5, maxiters=15, alpha=1.):
         alpha (float): Backtracking scalar (Problem 3).
 
     Returns:
-        (float or ndarray): The approximation for a root of f.
+        (float or ndarray): The approximation for a zero of f.
         (bool): Whether or not Newton's method converged.
         (int): The number of iterations computed.
     """
@@ -56,7 +56,7 @@ def optimal_alpha(f, x0, Df, tol=1e-5, maxiters=15):
 
     Parameters:
         f (function): a function from R^n to R^n (assume n=1 until Problem 5).
-        x0 (float or ndarray): The initial guess for the root of f.
+        x0 (float or ndarray): The initial guess for the zero of f.
         Df (function): The derivative of f, a function from R^n to R^(nxn).
         tol (float): Convergence tolerance. The function should returns when
             the difference between successive approximations is less than tol.
@@ -84,13 +84,13 @@ def prob6():
 
 
 # Problem 7
-def plot_basins(f, Df, roots, domain, res=1000, iters=15):
+def plot_basins(f, Df, zeros, domain, res=1000, iters=15):
     """Plot the basins of attraction of f on the complex plane.
 
     Parameters:
         f (function): A function from C to C.
         Df (function): The derivative of f, a function from C to C.
-        roots (ndarray): A 1-D array of the roots of f.
+        zeros (ndarray): A 1-D array of the zeros of f.
         domain ([r_min, r_max, i_min, i_max]): A list of scalars that define
             the window limits and grid domain for the plot.
         res (int): A scalar that determines the resolution of the plot.
