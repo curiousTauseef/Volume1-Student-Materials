@@ -1,121 +1,137 @@
-# differentiation.py
+# solutions.py
 """Volume 1: Differentiation.
 <Name>
 <Class>
 <Date>
 """
 
-#Problem 1
+
+# Problem 1
 def prob1():
-    """Return the derivative of e^sin(cos(x)) at x=1 as a float using SymPy."""
-    raise ValueError("Problem 1 Not Implemented.")
+    """Return the derivative of (sin(x) + 1)^sin(cos(x)) using SymPy."""
+    raise NotImplementedError("Problem 1 Incomplete")
+
 
 # Problem 2
-def fdq1(f, pts, h=1e-5):
-    """Calculate the first order forward difference quotient."""
-    raise ValueError("Forward Quotient Not Implemented")
+def fdq1(f, x, h=1e-5):
+    """Calculate the first order forward difference quotient of f at x."""
+    raise NotImplementedError("Problem 2 Incomplete")
 
-def bdq2(f, pts, h=1e-5):
-    """Calculate the second order backward difference quotient."""
-    raise ValueError("Backward Quotient Not Implemented.")
+def fdq2(f, x, h=1e-5):
+    """Calculate the second order forward difference quotient of f at x."""
+    raise NotImplementedError("Problem 2 Incomplete")
 
-def cdq2(f, pts, h=1e-5):
-    """Calculate the second order centered difference quotient."""
-    raise ValueError("2nd Order Center Quotient Not Implemented.")
+def bdq1(f, x, h=1e-5):
+    """Calculate the first order backward difference quotient of f at x."""
+    raise NotImplementedError("Problem 2 Incomplete")
 
-def cdq4(f, pts, h=1e-5):
-    """Calculate the fourth order centered difference quotient."""
-    raise ValueError("4th Order Center Quotient Not Implemented.")
+def bdq2(f, x, h=1e-5):
+    """Calculate the second order backward difference quotient of f at x."""
+    raise NotImplementedError("Problem 2 Incomplete")
+
+def cdq2(f, x, h=1e-5):
+    """Calculate the second order centered difference quotient of f at x."""
+    raise NotImplementedError("Problem 2 Incomplete")
+
+def cdq4(f, x, h=1e-5):
+    """Calculate the fourth order centered difference quotient of f at x."""
+    raise NotImplementedError("Problem 2 Incomplete")
+
 
 # Problem 3
-def error_plot(pt):
-    """
-    For the function f(x)=(sin(x)+1)**x, calculate and plot the errors for
-    the following:
-        1. Second order backward difference quotient
-        2. Second order centered difference quotient
-        3. Fourth order centered difference quotient
-    Do this for at least 6 evenly-spaced values of h in the range [1e-8, 1].
-    Use a loglog plot, include a legend and mark the values of h on your graph
-    by putting a noticeable dot there.
+def prob3(x0):
+    """Let f(x) = (sin(x) + 1)^(sin(cos(x))). Use prob1() to calculate the
+    exact value of f'(x0). Then use fdq1(), fdq2(), bdq1(), bdq2(), cdq1(),
+    and cdq2() to approximate f'(x0) for h=10^-8, 10^-7, ..., 10^-1, 1.
+    Track the absolute error for each trial, then plot the absolute error
+    against h on a log-log scale.
 
     Parameters:
-        pt(float): Point where the derivative is being approximated at.
+        x0 (float): The point where the derivative is being approximated.
     """
-    raise ValueError("Problem 3 Not Implemented.")
+    raise NotImplementedError("Problem 3 Incomplete")
+
 
 # Problem 4
-def prob4(filename="plane.txt"):
-    """
-    Return the speed of the plane, which is the derivative of the position.
-    Use the radar dish angles to determine the position of the plane at discrete
-    points. Then use these points to approximate the derivative using difference
-    quotients. Use centered difference quotients for the interior points and
-    forward/backward for the two endpoints. Plot the trajectory and
-    speeds on seperate graphs.
+def prob4():
+    """The radar stations A and B, separated by the distance 500m, track a
+    plane C by recording the angles alpha and beta at one-second intervals.
+    Your goal, back at air traffic control, is to determine the speed of the
+    plane.
 
-    Parameters:
-        filename(string, optional): The name of the file that has the data for
-            t, alpha, and beta. Defaults to "plane.txt".
-    Returns:
-        (array): An array of floats containing the approximate speed at each
-            point.
+    Successive readings for alpha and beta at integer times t=7,8,...,14
+    are stored in the file plane.npy. Each row in the array represents a
+    different reading; the columns are the observation time t, the angle
+    alpha (in degrees), and the angle beta (also in degrees), in that order.
+    The Cartesian coordinates of the plane can be calculated from the angles
+    alpha and beta as follows.
+
+    x(alpha, beta) = a tan(beta) / (tan(beta) - tan(alpha))
+    y(alpha, beta) = (a tan(beta) tan(alpha)) / (tan(beta) - tan(alpha))
+
+    Load the data, convert alpha and beta to radians, then compute the
+    coordinates x(t) and y(t) at each given t. Approximate x'(t) and y'(t)
+    using a forward difference quotient for t=7, a backward difference
+    quotient for t=14, and a centered difference quotient for t=8,9,...,13.
+    Return the values of the speed at each t.
     """
-    raise ValueError("Problem 4 Not Implemented.")
+    raise NotImplementedError("Problem 4 Incomplete")
+
 
 # Problem 5
-def center_jac(f, n, m, pt, h=1e-5):
-    """
-    Compute the approximate Jacobian matrix of f at pt using the second order
-    centered difference quotient.
+def jacobian_cdq2(f, x, h=1e-5):
+    """Approximate the Jacobian matrix of f:R^n->R^m at x using the second
+    order centered difference quotient.
 
     Parameters:
-        f (function): the multidimensional function for which the derivative
-            will be approximated.
-        n (int): dimension of the domain of f.
-        m (int): dimension of the range of f.
-        pt (NumPy array): an n-dimensional NumPy array representing a point in
-            R^n.
-        h (float, optional): a float to use in the centered difference
-            approximation. Defaults to 10^-5.
+        f (function): the multidimensional function to differentiate.
+            Accepts a NumPy (n,) ndarray and returns an (m,) ndarray.
+            For example, f(x,y) = [x+y, xy**2] could be implemented as follows.
+            >>> f = lambda x: np.array([x[0] + x[1], x[0] * x[1]**2])
+        x ((n,) ndarray): the point in R^n at which to compute the Jacobian.
+        h (float): the step size in the finite difference quotient.
 
     Returns:
-        (NumPy array) the (m x n)-dimensional Jacobian matrix of f at pt using
-            the second order centered difference quotient.
+        ((m,n) ndarray) the Jacobian matrix of f at x.
     """
-    raise ValueError("Problem 5 Not Implemented.")
+    raise NotImplementedError("Problem 5 Incomplete")
+
 
 # Problem 6
-def prob6():
-    """Compute the derivative of ln(sqrt(sin(sqrt(x)))) at x = pi/4 using SymPy,
-    the second order centered difference quotient and autograd. Print the
-    computation time and error for each method. Return the value of the
-    autograd approximation.
+def cheb_poly(x, n):
+    """Compute the nth Chebyshev polynomial at x.
 
-    Returns:
-        (float): Value of the derivative approximated by autograd.
+    Parameters:
+        x (autograd.ndarray): the points to evaluate T_n(x) at.
+        n (int): The degree of the polynomial.
     """
-    raise ValueError("Problem 6 Not Implemented.")
+    raise NotImplementedError("Problem 6 Incomplete")
+
+def prob6():
+    """Use Autograd and cheb_poly() to create a function for the derivative
+    of the Chebyshev polynomials, and use that function to plot the derivatives
+    over the domain [-1,1] for n=0,1,2,3,4.
+    """
+    raise NotImplementedError("Problem 6 Incomplete")
+
 
 # Problem 7
-def prob7():
-    """
-    Use autograd to take the first and second derivatives of the Taylor series
-    of sin(x). Plot the original function along with its two derivatives on the
-    interval [-pi,pi].
-    """
-    raise ValueError("Problem 7 Not Implemented.")
+def prob7(N=200):
+    """Let f(x) = (sin(x) + 1)^sin(cos(x)). Perform the following experiment N
+    times:
 
-# Problem 8
-def prob8():
-    """
-    Compute the Jacobian for the function
-    f(x,y) = [(e^x)sin(y) + y^3, 3y - cos(x)] using Sympy, the second order
-    centered difference quotient and autograd. Print the computation time for
-    each differentiation technique. Return the value of the autograd
-    approximation.
+        1. Choose a random value x0.
+        2. Use prob1() to calculate the “exact” value of f′(x0). Time how long
+            the entire process takes, including calling prob1() (each
+            iteration).
+        3. Time how long it takes to get an approximation of f'(x0) using
+            cdq4(). Record the absolute error of the approximation.
+        4. Time how long it takes to get an approximation of f'(x0) using
+            Autograd (calling grad() every time). Record the absolute error of
+            the approximation.
 
-    Returns:
-        (array): The value of the jacobian found using autograd at (1,1).
+    Plot the computation times versus the absolute errors on a log-log plot
+    with different colors for SymPy, the difference quotient, and Autograd.
+    For SymPy, assume an absolute error of 1e-18.
     """
-    raise ValueError("Problem 8 Not Implemented.")
+    raise NotImplementedError("Problem 7 Incomplete")

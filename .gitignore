@@ -15,6 +15,7 @@ stability_data.npy
 matrix.txt
 ncaa2013.csv
 social_network.csv
+nyc_*.json
 
 # General Files ---------------------------------------------------------------
 
@@ -22,6 +23,7 @@ social_network.csv
 __init__.py
 __main__.py
 *.py[cdfo]
+__pycache__/
 .ipynb_checkpoints/
 
 # Latex temporary files
@@ -86,10 +88,12 @@ develop-eggs
 .coverage
 .tox
 .cache/
-__pycache__/
 htmlcov/
 
 # Miscellaneous
 build/
 *.html
 *.mod
+
+# Files to NOT ignore.
+!ShellFinal.tar.gz
